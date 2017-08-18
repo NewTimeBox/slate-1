@@ -247,7 +247,10 @@
             <a href="#upload" class="toc-h1 toc-link" data-title="Upload">Upload</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#server-side" class="toc-h2 toc-link" data-title="Upload">Server Side</a>
+                    <a href="#upload-button" class="toc-h2 toc-link" data-title="Upload">Upload Button</a>
+                  </li>
+                  <li>
+                    <a href="#server-side-upload" class="toc-h2 toc-link" data-title="Upload">Server Side Upload</a>
                   </li>
                   <li>
                     <a href="#upload-response" class="toc-h2 toc-link" data-title="Upload">Upload Response</a>
@@ -352,48 +355,164 @@ You must replace <code>Path of ResizeAPI</code> with server path of <i>ResizeAPI
 You must replace <code>Your_SECRET_KEY</code> with your Secret API Key.
 </aside>
 <h1 id='integration'>Integration</h1>
+<p>To use our service with your existing images, you should integrate them.
 <aside class="success">
-Our integration model is the best in the market. We support UI and server side integration and you don't need to change anything in your database. Even people who is not developer can integrate their website's images with our service.
-</aside>
+Our integration model is the best in the market. We support UI and server side integration and you don&#39;t need to change anything in your database. Even people who is not developer can integrate their websites&#39; images with our service.
+</aside></p>
 
-<p>To integrate your existing images to our service, you just need to upload them to our service.
+<p>To integrate your existing images, you just need to upload them to our service.
 To do this, we have 2 option: from <em>UI</em> and from <em>server side code</em>.</p>
 <h2 id='ui-integration-support'>UI Integration support</h2>
-<p>Login to <a href="http://cloudengine.newtimebox.com/dashboard">Dashboard</a>.Then click more button of project that you want to integrate your images with.Then Scroll down to section which is above of Keys section.You will see <em>Your all image</em> and <em>Open folder</em> link. Click it, it will open page which is our Cloud Storage console which called OOS(<em>Online Operation System</em>).Then it will automatically open Virtual folder which contains all your images which is connected to your API KEY.Then choose all your old images, drag them to that virtual folder and drop them to there, and you&#39;re done.</p>
+<p>Login to <a href="http://cloudengine.newtimebox.com/dashboard">Dashboard</a>. If you haven&#39;t already created new project in dashboard click <em>New Project</em> and then choose the best plan that fits you. Then return back to dashboard and click more button of project that you want to integrate your images with. Then Scroll down to section which is above of Keys section.You will see <em>[Your all images]</em> option and <em>Open folder</em> link in front of it. Click it to open the page which is our Cloud Storage console that called OOS(<em>Online Operation System</em>). Then it will automatically open Virtual folder which contains all your images and is connected to your API KEY. Then choose all your old images, drag and drop them to that virtual folder (in browser), and you&#39;re done.</p>
 
 <aside class="notice">
-If your images are in the your server, download them to your computer. Then open folder which contains all images ( if it is zip, extract it and then open folder to see all images)
+If your images are in your server, download them to your computer. Then open folder you just downloaded which contains all your existing images ( if it is zip, extract it and then open folder to see all images)
 </aside>
 <h2 id='integration-with-server-side-code'>Integration with server side code</h2>
-<p>It is pretty easy, you don&#39;t even need to change or save new name of each image.You just need to upload them to our service with same name and you&#39;re done.</p>
+<p>It is pretty easy, you don&#39;t even need to change or save new name for each image. You just need to upload them to our service with the same name and you&#39;re done.</p>
 
-<p>You can create an integration file in your server, it will run just once and then your can delete it.In that file, select paths and names(filenames) of all images.After that, for each image run upload code.To see how you can upload images with server side code you can select <em>Upload</em> section then select subsection which named as <em>Server Side</em>.</p>
+<p>To do this you can create an integration file (e.g. <code>integ.php</code>) in your server, it will run just once and then you can delete it. In that file, select paths and names(filenames) of all your existing images. After that, for each image run upload code. To see how you can upload images with server side code you can select <em><a href="#server-side-upload">Server Side Upload subsection of Upload section</a></em> .</p>
 <h1 id='upload'>Upload</h1>
 <p>There is a 2 way to upload images to our service: UI and  with Server side code</p>
-<h2 id='server-side'>Server Side</h2>
+<h2 id='upload-button'>Upload Button</h2>
+<p>We are proving rich Upload button which supports drag and drop upload (link,image tag,image from operation system) and multiple file uploading.</p>
+
+<p>You can setup our upload button with php or html.</p>
+
+<p>After you setup upload button you should call <code>get_uploader_scripts</code> javascript function to activate button.After activation our javascript library will instantly convert your input to div which will be actual <code>upload button</code> with all functionality.Upload button means button that our javascript library created.</p>
+
+<p>You can customize <code>Upload Button</code> and <code>Drag Area</code> with attributes of input you just created.
+<code>Drag Area</code> will be appear when user drag some item on browser.</p>
+
+<blockquote>
+<p>To create upload button with php you can use below code:</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="c1">//below is array of attributes for input which will accept files.
+</span><span class="nv">$button_input_attr</span><span class="o">=</span><span class="k">array</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nx">Resizzer</span><span class="o">::</span><span class="na">create_upload_button</span><span class="p">(</span><span class="nv">$button_input_attr</span><span class="p">);</span>
+<span class="c1">//after you setup button in order to activate it use below code
+</span><span class="nx">Resizzer</span><span class="o">::</span><span class="na">get_uploader_scripts</span><span class="p">();</span>
+
+</code></pre>
+<blockquote>
+<p>To create upload button with html you can use below code:</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="c">&lt;!---There should be a container div--&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+<span class="c">&lt;!---class attr should contain newtimebox-oos-image-uploader--&gt;</span>
+<span class="nt">&lt;input</span> 
+<span class="na">class=</span><span class="s">"newtimebox-oos-image-uploader"</span>
+<span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"file"</span> <span class="na">accept=</span><span class="s">"image/*"</span> 
+<span class="na">multiple=</span><span class="s">"true"</span>
+<span class="na">buttonStyle=</span><span class="s">""</span> <span class="na">buttonAttr=</span><span class="s">""</span> <span class="na">buttonClass=</span><span class="s">""</span> <span class="na">dragAreaStyle=</span><span class="s">""</span>
+<span class="na">DragAreaAttr=</span><span class="s">""</span> <span class="na">dragAreaClass=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+<span class="cp">&lt;?php</span>
+
+<span class="c1">//after you setup button in order to activate it use below code
+</span><span class="nx">Resizzer</span><span class="o">::</span><span class="na">get_uploader_scripts</span><span class="p">();</span>
+
+</code></pre>
+<blockquote>
+<p>Each attr has meaning, you can read about each of them</p>
+</blockquote>
+
+<p>Meaning of each input attributes</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Accepts</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>newtimebox-uploader-id</td>
+<td>unique string for each button</td>
+<td>if you have multiple upload buttons, it will help you identify buttons.For example <code>newtimebox_OOS_uploader.get_uploaded_file_names(&#39;string that you have passed to newtimebox-uploader-id&#39;);</code>, this function will return current uploaded file names related with id that passes to its paramater.</td>
+</tr>
+<tr>
+<td>multiple</td>
+<td>true or false</td>
+<td>if it is true, upload button can accept more than one file at the same time, if it is false, upload button only can accept one file at the same time.</td>
+</tr>
+<tr>
+<td>image-uploader-count-limit</td>
+<td>number</td>
+<td>maximum how much file uploader button can accept at the same time</td>
+</tr>
+<tr>
+<td>buttonStyle</td>
+<td>css string</td>
+<td><code>Upload Button</code>  style attribute. E.g. <code>color:blue;padding:20px;background:white;</code></td>
+</tr>
+<tr>
+<td>buttonAttr</td>
+<td>string</td>
+<td>Custom attr of <code>Upload Button</code>. E.g. <code>mycustomerAttr=true data-x=&quot;no way&quot;</code></td>
+</tr>
+<tr>
+<td>buttonClass</td>
+<td>string</td>
+<td>add new custom classes to <code>Upload Button</code></td>
+</tr>
+<tr>
+<td>dragAreaStyle</td>
+<td>css string</td>
+<td><code>Drag Area</code>  style attribute. Please look buttonStyle.</td>
+</tr>
+<tr>
+<td>dragAreaAttr</td>
+<td>string</td>
+<td>Custom attrs for <code>Drag Area</code>. Please look buttonAttr.</td>
+</tr>
+<tr>
+<td>dragClass</td>
+<td>string</td>
+<td>add new custom classes to <code>Drag Area</code></td>
+</tr>
+</tbody></table>
+<h3 id='usage-of-upload-button'>Usage of Upload Button</h3>
+<p>We have created javascript library for you which was automatically loaded when you call <code>Resizzer::get_uploader_scripts();</code> function.You can use <code>newtimebox_OOS_uploader</code> class to control <code>Upload Button</code> behavior and requests that it sent.</p>
+<h2 id='server-side-upload'>Server Side Upload</h2>
 <blockquote>
 <p>To upload image use this code:</p>
 </blockquote>
 <pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$file_path</span> <span class="o">=</span> <span class="s1">'Path of Image'</span><span class="p">;</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="s1">'Path, Url or data Uri of Image'</span><span class="p">;</span>
 
-<span class="nv">$data</span> <span class="o">=</span> <span class="nx">Resizzer</span><span class="o">::</span><span class="na">upload</span><span class="p">(</span><span class="nv">$file_path</span><span class="p">,</span><span class="k">array</span><span class="p">(</span><span class="s1">'filename'</span><span class="o">=&gt;</span><span class="s1">'Yourfilename'</span><span class="p">));</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nx">Resizzer</span><span class="o">::</span><span class="na">upload</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span><span class="k">array</span><span class="p">(</span><span class="s1">'filename'</span><span class="o">=&gt;</span><span class="s1">'Yourfilename'</span><span class="p">));</span>
 <span class="c1">//you can check upload is successful or not
-</span>
+</span></code></pre>
+<blockquote>
+<p>To check errors use this code:</p>
+</blockquote>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="k">if</span><span class="p">(</span><span class="nv">$data</span><span class="o">!==</span><span class="kc">false</span><span class="p">){</span>
-<span class="c1">//upload was successful
-//you can save image name , to get image name use below code
-</span><span class="nv">$new_image_name</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'filename'</span><span class="p">];</span>
+<span class="c1">//response is json
+</span>    <span class="k">if</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'error'</span><span class="p">]</span><span class="o">!=</span><span class="kc">false</span><span class="p">){</span>
+    <span class="c1">//upload was successful
+</span>    <span class="c1">//you can save image name , to get image name use below code
+</span>    <span class="nv">$new_image_name</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'file_name'</span><span class="p">];</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+      <span class="c1">//upload was failed
+</span>    <span class="c1">//To get error you can use below code
+</span>    <span class="k">echo</span> <span class="s1">'Error Message:'</span><span class="o">.</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'error_mes'</span><span class="p">]</span><span class="o">.</span><span class="s1">'&lt;br/&gt;
+          Error Code:'</span><span class="o">.</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'error_code'</span><span class="p">];</span>
+    <span class="p">}</span>
 <span class="p">}</span><span class="k">else</span><span class="p">{</span>
 
-<span class="c1">//upload was failed
-</span>
+<span class="c1">//upload was failed, response is not json
+</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nx">Resizzer</span><span class="o">::</span><span class="na">getLastResponse</span><span class="p">());</span>
+
 <span class="p">}</span>
 
 </code></pre>
-<p>You can use Upload function from our API library.
-It take 2 params:<code>String file_path</code>,<code>array params</code></p>
+<p>You can use Upload function from our API library. 
+It take 2 params: <code>String file</code>,<code>array params</code></p>
 
 <table><thead>
 <tr>
@@ -403,9 +522,9 @@ It take 2 params:<code>String file_path</code>,<code>array params</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td>file_path</td>
+<td>file</td>
 <td>required</td>
-<td>You should pass image path.</td>
+<td>You should pass path, url or data uri of image.E.g. this parameter can be one of these:<code>/home/cat.jpg</code>, <code>http://www.example.com/image.jpg</code>, <code>data:image/jpg;base64,RASDHKLSJDHKLASHDKLJASHDSexample</code>.</td>
 </tr>
 <tr>
 <td>params</td>
@@ -414,16 +533,16 @@ It take 2 params:<code>String file_path</code>,<code>array params</code></p>
 </tr>
 </tbody></table>
 
-<p>You can use this code to upload images from your clients and also integrate your old images with our service.</p>
+<p>You can use this code to upload images from your users and also integrate your existing images with our service.</p>
 
 <p>If response equals to <code>false</code>, it means upload process failed, otherwise upload process was successful.</p>
-<h2 id='upload-response'>Upload Response</h2>
+<h2 id='upload-response'>Upload Response</h2><h3 id='success-response'>Success Response</h3>
 <blockquote>
 <p>If upload was successfull it will return a multidimensional array form of below json response.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
-
+</span><span class="s2">"error"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
 </span><span class="s2">"file_name"</span><span class="p">:</span><span class="s2">"filename of image"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">6000</span><span class="p">,</span><span class="w">
 </span><span class="s2">"file_extension"</span><span class="p">:</span><span class="s2">"jpg"</span><span class="p">,</span><span class="w">
@@ -432,12 +551,12 @@ It take 2 params:<code>String file_path</code>,<code>array params</code></p>
     </span><span class="s2">"height"</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="w">
     </span><span class="s2">"width"</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="w">
         </span><span class="p">}</span><span class="w">
-</span><span class="s2">"file_src"</span><span class="p">:</span><span class="s2">"image url of image,so you can use it in image tag"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"file_src"</span><span class="p">:</span><span class="s2">"full url of image, so you can use it in image tag as src"</span><span class="p">,</span><span class="w">
 
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Below is response for successfully uploaded images.</p>
+<p>Below is response from our servers for successfully uploaded images.</p>
 
 <table><thead>
 <tr>
@@ -449,7 +568,7 @@ It take 2 params:<code>String file_path</code>,<code>array params</code></p>
 <tr>
 <td>file_name</td>
 <td>string</td>
-<td>if all your images named uniquely it will be as same as you passes,if you didn&#39;t pass name, it will be automatically generated.</td>
+<td>if all your images named uniquely it will be as same as you passes. If you didn&#39;t pass filename, it will be automatically generated.</td>
 </tr>
 <tr>
 <td>size</td>
@@ -459,7 +578,7 @@ It take 2 params:<code>String file_path</code>,<code>array params</code></p>
 <tr>
 <td>file_extension</td>
 <td>mime_type</td>
-<td>jpg,png and other mime type of file.<code>Note:if uploaded image name is not contain extension, it can return filename directly</code></td>
+<td>jpg, png and other mime types of files.<code>Note:if uploaded image name is not contain extension, it can return filename directly</code></td>
 </tr>
 <tr>
 <td>image_dimensions</td>
@@ -469,7 +588,7 @@ It take 2 params:<code>String file_path</code>,<code>array params</code></p>
 <tr>
 <td>file_src</td>
 <td>string</td>
-<td>you can use this src to show response.If you are using UI upload, you can set beforehand which dimensions form of image you want.</td>
+<td>you can use this in html image tag as src attribute. If you are using our <a href="#upload-button">UI Upload Button</a> (with Javascript), you need to know that <code>set_response_url_params</code> function will affect this response index, so it will return manipulated form of image that you required in that function.</td>
 </tr>
 </tbody></table>
 <h1 id='params'>Params</h1>
