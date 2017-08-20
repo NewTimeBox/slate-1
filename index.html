@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;php&quot;]">
+  <body class="index" data-languages="[&quot;php&quot;,&quot;example&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,6 +212,7 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="php">php</a>
+              <a href="#" data-language-name="example">example</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -476,6 +477,157 @@ If your images are in your server, download them to your computer. Then open fol
 </tbody></table>
 <h3 id='usage-of-upload-button'>Usage of Upload Button</h3>
 <p>We have created javascript library for you which was automatically loaded when you call <code>Resizzer::get_uploader_scripts();</code> function.You can use <code>newtimebox_OOS_uploader</code> class to control <code>Upload Button</code> behavior and requests that it sent.</p>
+
+<p>When user choose images or drag and drop them to <code>Upload Button</code>, user&#39;s browser will send those images to our secure servers. Then our servers will return response which contains file_name , mime_type, file_src and other useful information for you. You can check all response indexes in <a href="#upload-response">Upload Response</a> section.</p>
+
+<blockquote>
+<p>To manipulate new uploaded image url you can use this code:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>
+
+<span class="nx">newtimebox_OOS_uploader</span><span class="p">.</span><span class="nx">set_response_url_params</span><span class="p">({</span>
+
+<span class="s1">'width'</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="s1">'height'</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="s1">'crop'</span><span class="p">:</span><span class="s1">'(12,12,34,566)'</span><span class="p">,</span>
+
+<span class="p">});</span>
+
+
+</code></pre>
+<p><b>How to get and manipulate new Uploaded Image Url</b></p>
+
+<p><code>newtimebox_OOS_uploader.set_response_url_params</code></span> will set manipulation params for <code>file_src</code> which will come with response and will represent url for uploaded image .(<a href="#" onclick="$('[custom_id=ReponseParams]').fadeToggle(200);return false;" >click to learn more</a>)</p>
+
+<p><span custom_id="ReponseParams" style="display:none" >When users upload image, you probably want to show preview of it to them. When user uploads image, our servers will save it and return response. This response will contain <code>file_src</code> index which represents url of new uploaded image, so you can put this src to some image tag to show user new uploaded image preview. But probably you will want it with specified manipulation params. E.g. <code>width,height,crop,fit,blur and other effects</code>. But if you have setted <code>secure</code> param to true in <code>Resizzer::connect</code> function (see <a href="#authentication">Authentication</a> ) you cannot manipulate it after user uploaded it. To manipulate image url that user have uploaded recently, you should define manipulation params beforehand so our servers will manipulate image and then it will return it. To do this you can use <code>newtimebox_OOS_uploader.set_response_url_params</code> function and can pass manipulation params as a javascript object.</span></p>
+<h3 id='how-to-control-upload-process'>How to control upload process</h3>
+<p>We are providing callback for each step in uploading process so you will be able to customize all processes easily.</p>
+
+<p>In javascript you can use functions of <code>newtimebox_OOS_uploader</code> javascript class.</p>
+
+<p>Meaning of params that will be used in chart:</p>
+
+<p><code>element</code> is container of upload button  (in html code it is div that contains <code>Upload Button</code>)</p>
+
+<p><code>upload_count</code> - how many images user have chosen</p>
+
+<p><code>index</code> - index of new  chosen image(for example, index of second uploaded image will be 2)</p>
+
+<p><code>percentComplete</code> - how much process finished for uploading image</p>
+
+<p><code>event</code> - come from xhr.upload.addEventListener(&quot;progress&quot;,function(<code>event</code>))</p>
+
+<p><code>data</code> - is response data from server, you can see it in <a href="#upload-response">Upload Response section</a></p>
+
+<blockquote>
+<p>Below is default behavior code to control uploading and also you can customize it:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+//will be called after user selects image that he or she wants to upload
+newtimebox_OOS_uploader.when_select(function(element,upload_count){
+    //inside is just example you can customize it
+    if(element.next().is('.newtimebox-response-container')){
+        element.next().remove();
+    }
+    element.after('&lt;div class="newtimebox-response-container" &gt;&lt;/div&gt;');
+});
+
+//will be called before each upload process begin for each image
+newtimebox_OOS_uploader.when_upload_begin(function(element,index,upload_count){
+
+element.next('.newtimebox-response-container').append('&lt;div \
+upload-index="'+index+'" class="newtimebox-response-image"\
+ style="margin: 6px 5px;display: inline-block;\
+border: 1px solid #1874CD;background: #e6e7e8;" &gt;\
+&lt;div  class="newtimebox-response-image-loader" style="width:200px;" &gt;\
+&lt;div  style="background:#1874CD;width:10%;\
+min-width:10%;height:15px;min-height:15px;color: white;\
+    text-align: center;"  &gt;0%&lt;/div&gt;\
+        &lt;/div&gt;');
+});
+
+//will be called each time upload progress finished 
+//so you can show how many percent of image uploaded
+newtimebox_OOS_uploader.when_upload_progress(function(e,percentComplete,element,index){
+
+var image_loader = 
+element.next('.newtimebox-response-container')
+.find('.newtimebox-response-image[upload-index="'+index+'"] &gt; \
+.newtimebox-response-image-loader &gt; div');
+image_loader.animate({width:percentComplete + "%" }, 100);
+image_loader.html(percentComplete + "%");
+});
+
+//will fire after upload finished  successfully when code is 200
+newtimebox_OOS_uploader.when_upload_finish(function(data,element,index){
+    //you need to check if data contains error index or not
+    try{
+        var data = JSON.parse(data);
+    }catch(e){
+        return false;
+    }
+
+var image_process_container =
+ element.next('.newtimebox-response-container')
+.find('.newtimebox-response-image[upload-index="'+index+'"]');
+image_process_container.
+css({'border-color':'#243a4e'});
+
+    if(data.error===true){
+        image_process_container.remove();
+        return false;
+
+    }
+    //data.file_src is image that return
+// and contains manipulation params that you defined
+    image_process_container.html('&lt;img src="'+data.file_src+'" /&gt;');
+
+});
+
+
+//will fire when upload failed
+newtimebox_OOS_uploader.when_upload_fail(function(element,index){
+    //when upload response code is not 200
+    console.log('upload failed');
+    var image_process_container = 
+element.next('.newtimebox-response-container')
+.find('.newtimebox-response-image[upload-index="'+index+'"]');
+        image_process_container.remove();
+});
+
+
+</code></pre>
+<table><thead>
+<tr>
+<th>Function</th>
+<th>passed params</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>when_select</td>
+<td>element ,upload_count</td>
+<td>This will be called when user select or drag and drop images.</td>
+</tr>
+<tr>
+<td>when_upload_begin</td>
+<td>element, index , upload_count</td>
+<td>it will be called for each image that begins to be uploaded</td>
+</tr>
+<tr>
+<td>when_upload_progress</td>
+<td>event, percentComplete, element, index</td>
+<td>it will be called for each image in each process complete</td>
+</tr>
+<tr>
+<td>when_upload_finish</td>
+<td>data,element,index</td>
+<td>it will be called when uploading process was finished</td>
+</tr>
+<tr>
+<td>when_upload_fail</td>
+<td>element,index</td>
+<td>it will be called when upload failed and response code is not 200.</td>
+</tr>
+</tbody></table>
 <h2 id='server-side-upload'>Server Side Upload</h2>
 <blockquote>
 <p>To upload image use this code:</p>
@@ -568,7 +720,7 @@ It take 2 params: <code>String file</code>,<code>array params</code></p>
 <tr>
 <td>file_name</td>
 <td>string</td>
-<td>if all your images named uniquely it will be as same as you passes. If you didn&#39;t pass filename, it will be automatically generated.</td>
+<td>filename will be automatically generated, if you use server side upload and provide filename as a parameter, it will upload file with the same name and it will return it back. If filename is not unique, our service will add version to end of filename. E.g. <code>Yourfilename.jpg(1)</code></td>
 </tr>
 <tr>
 <td>size</td>
@@ -577,8 +729,13 @@ It take 2 params: <code>String file</code>,<code>array params</code></p>
 </tr>
 <tr>
 <td>file_extension</td>
+<td>string</td>
+<td>with which extension file was uploaded.<code>Note:if uploaded image name is not contain extension, it can return filename directly</code></td>
+</tr>
+<tr>
 <td>mime_type</td>
-<td>jpg, png and other mime types of files.<code>Note:if uploaded image name is not contain extension, it can return filename directly</code></td>
+<td>string</td>
+<td>mime type of file that uploaded.For example &quot;image/jpeg&quot;</td>
 </tr>
 <tr>
 <td>image_dimensions</td>
@@ -799,6 +956,7 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="php">php</a>
+                <a href="#" data-language-name="example">example</a>
           </div>
       </div>
     </div>
