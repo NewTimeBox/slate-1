@@ -268,6 +268,9 @@
                   <li>
                     <a href="#usage-of-manipulation-params" class="toc-h2 toc-link" data-title="Image Processing">Usage of manipulation params</a>
                   </li>
+                  <li>
+                    <a href="#responsive-images" class="toc-h2 toc-link" data-title="Image Processing">Responsive Images</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -317,7 +320,7 @@ Welcome to the Resizzer API! You can use our API to handle uploading, storing, p
 
 <p>You can view code examples in the dark area to the right.</p>
 
-<p>This API will help your website to improve performance and provides URL based image manipulation, so you can manipulate your images from URL. But we are also providing secure token, so only you will be able to manipulate URLs from your php code.</p>
+<p>This API will help your website to improve performance and provides URL based image manipulation, so you can manipulate your images from URL. But we are also providing secure token, so only you will be able to manipulate URLs from your php code. To see how our service works you can open <a href="http://cloudengine.newtimebox.com/quick_start">this page</a>, it contains our <code>Upload Button</code> and some Manipulation params.</p>
 <h1 id='quick-start'>Quick Start</h1>
 <p>In this section you can see quick examples. In 5 minute you will be able to use our service easily. </p>
 <h2 id='setup'>Setup</h2>
@@ -371,7 +374,7 @@ Welcome to the Resizzer API! You can use our API to handle uploading, storing, p
 <p>Make sure to replace <code>Path of ResizerAPI</code> with local path to ResizerAPI library.</p>
 </blockquote>
 
-<p>Install our API from <a href="https://github.com/NewTimeBox/OOS_Engine_KEY_API">Github</a> , just click <em>Clone or download</em> button and click <em>Download zip</em>. After extracting zip, copy <em>ResizeAPI</em> folder into your project and use path of this folder to replace <code>Path of ResizeAPI</code>.You can use another way to do this , only purpose is just include autoload.php file in <em>ResizeAPI</em> folder you just downloaded.</p>
+<p>You can visit our <a href="https://github.com/NewTimeBox/OOS_Engine_KEY_API/">Github library</a>. Install our API from <a href="https://github.com/NewTimeBox/OOS_Engine_KEY_API/archive/master.zip">Github</a> , just click <em>Clone or download</em> button and click <em>Download zip</em>. After extracting zip, copy <em>ResizeAPI</em> folder into your project and use path of this folder to replace <code>Path of ResizeAPI</code>.You can use another way to do this , only purpose is just include autoload.php file in <em>ResizeAPI</em> folder you just downloaded.</p>
 
 <aside class="notice">
 You must replace <code>Path of ResizeAPI</code> with server path of <i>ResizeAPI folder</i> which you just installed.
@@ -614,7 +617,7 @@ There is a 2 way to use this functions: string form, array form. You should inse
 <h2 id='usage-of-manipulation-params'>Usage of manipulation params</h2>
 <p><b>Orientation</b> <code>or</code></p>
 
-<p>Rotates the image. Accepts <code>auto, 0, 90, 180 or 270</code>. Default is auto. The auto option uses Exif data to automatically orient images correctly.</p>
+<p>Rotates the image. Accepts <code>any integer</code> but only <code>auto, 0, 90, 180 or 270</code> these degrees can be use with <code>border</code> param. Default is auto. The auto option uses Exif data to automatically orient images correctly.</p>
 <pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Resizzer</span><span class="o">::</span><span class="na">get_image_tag</span><span class="p">(</span><span class="nv">$image</span><span class="p">,</span><span class="s1">'or_90'</span><span class="p">);</span>
@@ -867,6 +870,23 @@ Performance can be intensive on larger amounts of blur.
 
 </code></pre>
 <p><img style="display:block;margin:0px auto;text-align:center;"  src=" http://api.newtimebox.com/Resize_engine/w_500,fm_png/159988fb0bde60750108082802as123138.jpg?&connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577&secure_token=cbfe9e23c3f36d95578cac42eb2b1db3" ></p>
+<h2 id='responsive-images'>Responsive Images</h2>
+<p>You can use <code>dpr</code>param to get reponsive images for each device by using <code>srcset attribute of img tag</code>.</p>
+<pre class="highlight php tab-php"><code>
+<span class="nt">&lt;img</span>
+  <span class="na">srcset=</span><span class="s">"/dpr_1/asset.png 1x, /dpr_2/asset-2x.png 2x, /dpr_3/asset-3x.png 3x"</span>
+  <span class="na">src=</span><span class="s">"asset.png"</span>
+<span class="nt">&gt;</span>
+</code></pre><pre class="highlight php tab-php"><code>
+lets use dpr <span class="nt">&lt;br/&gt;</span>
+
+<span class="nt">&lt;img</span>
+  <span class="na">srcset=</span><span class="s">"http://api.newtimebox.com/Resize_engine/w_500,dpr_1/159988fb0bde60750108082802as123138.jpg?&amp;connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577&amp;secure_token=cbfe9e23c3f36d95578cac42eb2b1db3 1x, http://api.newtimebox.com/Resize_engine/w_500,dpr_1/159988fb0bde60750108082802as123138.jpg?&amp;connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577&amp;secure_token=cbfe9e23c3f36d95578cac42eb2b1db3 2x, http://api.newtimebox.com/Resize_engine/w_500,dpr_1/159988fb0bde60750108082802as123138.jpg?&amp;connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577&amp;secure_token=cbfe9e23c3f36d95578cac42eb2b1db3 3x"</span>
+  <span class="na">src=</span><span class="s">"http://api.newtimebox.com/Resize_engine/w_500/159988fb0bde60750108082802as123138.jpg?&amp;connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577&amp;secure_token=cbfe9e23c3f36d95578cac42eb2b1db3"</span>
+<span class="nt">&gt;</span>
+
+</code></pre>
+<p><img style="display:block;margin:0px auto;text-align:center;" srcset="http://api.newtimebox.com/Resize_engine/w_500,dpr_3/159988fb0bde60750108082802as123138.jpg?&connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577 1x, http://api.newtimebox.com/Resize_engine/w_500,dpr_2/159988fb0bde60750108082802as123138.jpg?&connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577 2x, http://api.newtimebox.com/Resize_engine/w_500,dpr_3/159988fb0bde60750108082802as123138.jpg?&connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577 3x" src=" http://api.newtimebox.com/Resize_engine/w_500,fm_png/159988fb0bde60750108082802as123138.jpg?&connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577&secure_token=cbfe9e23c3f36d95578cac42eb2b1db3" ></p>
 <h1 id='upload'>Upload</h1>
 <p>There is a 2 way to upload images to our service: UI and Server side code.</p>
 <h2 id='upload-button'>Upload Button</h2>
