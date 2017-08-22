@@ -209,7 +209,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo2.png" class="logo" alt="Logo" />
+      <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="php">php</a>
         </div>
@@ -220,6 +220,14 @@
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#quick-start" class="toc-h1 toc-link" data-title="Quick Start">Quick Start</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#setup" class="toc-h2 toc-link" data-title="Quick Start">Setup</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#configuration" class="toc-h1 toc-link" data-title="Configuration">Configuration</a>
@@ -290,6 +298,9 @@
           <li>
             <a href="#colors" class="toc-h1 toc-link" data-title="Colors">Colors</a>
           </li>
+          <li>
+            <a href="#examples" class="toc-h1 toc-link" data-title="Examples">Examples</a>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a href='http://cloudengine.newtimebox.com/'>Sign Up for an API Key</a></li>
@@ -307,6 +318,44 @@ Welcome to the Resizzer API! You can use our API to handle uploading, storing, p
 <p>You can view code examples in the dark area to the right.</p>
 
 <p>This API will help your website to improve performance and provides URL based image manipulation, so you can manipulate your images from URL. But we are also providing secure token, so only you will be able to manipulate URLs from your php code.</p>
+<h1 id='quick-start'>Quick Start</h1>
+<p>In this section you can see quick examples. In 5 minute you will be able to use our service easily. </p>
+<h2 id='setup'>Setup</h2>
+<p>Upload <a href="https://github.com/NewTimeBox/OOS_Engine_KEY_API">library</a> and include autoload file.</p>
+<pre class="highlight php tab-php"><code>
+<span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'path/to/ResizzerAPI/autoload.php'</span><span class="p">;</span>
+</code></pre>
+<p>Auth with your secret key. Follow steps in begining of <a href="#authentication">Authentication section</a>;</p>
+<pre class="highlight php tab-php"><code>
+<span class="cp">&lt;?php</span>
+<span class="nv">$secret_key</span><span class="o">=</span><span class="s1">'Your_SECRET_KEY'</span><span class="p">;</span>
+<span class="nv">$hours</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
+<span class="nv">$secure</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span> 
+<span class="c1">//you can pass params array (which can be used for web folders)
+// as 4th argument to function below optionally
+</span><span class="nx">Resizzer</span><span class="o">::</span><span class="na">connect</span><span class="p">(</span><span class="nv">$secret_key</span><span class="p">,</span><span class="nv">$hours</span><span class="p">,</span><span class="nv">$secure</span>
+<span class="p">,</span><span class="k">array</span><span class="p">(</span><span class="s1">'web_folder_url'</span><span class="o">=&gt;</span><span class="s1">'http://yoursite.com/path/to/images'</span><span class="p">)</span>
+
+<span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>Make sure to replace Your_SECRET_KEY with your SECRET API key.</p>
+</blockquote>
+
+<p>To see How to manipulate images you can look at <a href="#usage-of-manipulation-params">Usage of manipulation params</a>.</p>
+<pre class="highlight php tab-php"><code>
+<span class="cp">&lt;?php</span>
+
+<span class="nv">$image_name</span><span class="o">=</span><span class="s2">"cat.jpg"</span><span class="p">;</span> <span class="c1">//you can use full url also
+</span><span class="k">echo</span> <span class="s1">'&lt;img src="'</span><span class="o">.</span><span class="nx">Resizzer</span><span class="o">::</span><span class="na">get_image_url</span><span class="p">(</span><span class="nv">$image_name</span><span class="p">,</span>
+<span class="k">array</span><span class="p">(</span><span class="s1">'height'</span><span class="o">=&gt;</span><span class="mi">200</span><span class="p">,</span><span class="s1">'width'</span><span class="o">=&gt;</span><span class="mi">200</span><span class="p">,</span><span class="s1">'crop'</span><span class="o">=&gt;</span><span class="s1">'(123,123,123,12)'</span><span class="p">))</span><span class="o">.</span><span class="s1">'" /&gt;'</span><span class="p">;</span>
+</code></pre>
+<p>If you want to use our upload button you can look at <a href="#upload-button">Upload Button</a>.Our upload button will upload new images to our servers.
+<code>Resizzer::get_image_url</code> this function can get your images doesn&#39;t matter where you upload them, it can be your own server, our service or it can be totally different server (with url).</p>
+
+<p>If you want to download your new images to our server with php code, you can use our <a href="#server-side-upload">Server Side Upload</a>.</p>
 <h1 id='configuration'>Configuration</h1>
 <blockquote>
 <p>Use below code after installation of our library to include autoload file</p>
@@ -1538,6 +1587,9 @@ It take 2 params: <code>String file</code>, <code>array params</code></p>
 <p><code>yellow</code></p>
 
 <p><code>yellowgreen</code></p>
+<h1 id='examples'>Examples</h1>
+<p>To see examples you can look at <a href="#quick-start">Quick Start section</a>.
+To see How to manipulate images you can look at <a href="#usage-of-manipulation-params">Usage of manipulation params</a>.</p>
 
       </div>
       <div class="dark-box">
