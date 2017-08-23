@@ -209,7 +209,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo2.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="php">php</a>
         </div>
@@ -320,7 +320,7 @@ Welcome to the Resizzer API! You can use our API to handle uploading, storing, p
 
 <p>You can view code examples in the dark area to the right.</p>
 
-<p>This API will help your website to improve performance and provides URL based image manipulation, so you can manipulate your images from URL. But we are also providing secure token, so only you will be able to manipulate URLs from your php code. To see how our service works you can open <a href="http://cloudengine.newtimebox.com/quick_start">this page</a>, it contains our <code>Upload Button</code> and some Manipulation params.</p>
+<p>This API will help your website to improve performance and provides URL based image manipulation, so you can manipulate your images from URL. But we are also providing secure token, so you will be only able to manipulate URLs from your php code. To see how our service works you can open <a href="http://cloudengine.newtimebox.com/quick_start">this page</a>, it contains our <code>Upload Button</code> and some Manipulation params.</p>
 <h1 id='quick-start'>Quick Start</h1>
 <p>In this section you can see quick examples. In 5 minute you will be able to use our service easily. </p>
 <h2 id='setup'>Setup</h2>
@@ -351,7 +351,7 @@ Welcome to the Resizzer API! You can use our API to handle uploading, storing, p
 <pre class="highlight php tab-php"><code>
 <span class="cp">&lt;?php</span>
 
-<span class="nv">$image_name</span><span class="o">=</span><span class="s2">"cat.jpg"</span><span class="p">;</span> <span class="c1">//you can use full url also
+<span class="nv">$image_name</span><span class="o">=</span><span class="s2">"cat.jpg"</span><span class="p">;</span> <span class="c1">//you can also use full url 
 </span><span class="k">echo</span> <span class="s1">'&lt;img src="'</span><span class="o">.</span><span class="nx">Resizzer</span><span class="o">::</span><span class="na">get_image_url</span><span class="p">(</span><span class="nv">$image_name</span><span class="p">,</span>
 <span class="k">array</span><span class="p">(</span><span class="s1">'height'</span><span class="o">=&gt;</span><span class="mi">200</span><span class="p">,</span><span class="s1">'width'</span><span class="o">=&gt;</span><span class="mi">200</span><span class="p">,</span><span class="s1">'crop'</span><span class="o">=&gt;</span><span class="s1">'(123,123,123,12)'</span><span class="p">))</span><span class="o">.</span><span class="s1">'" /&gt;'</span><span class="p">;</span>
 </code></pre>
@@ -361,7 +361,7 @@ Welcome to the Resizzer API! You can use our API to handle uploading, storing, p
 <p>If you want to download your new images to our server with php code, you can use our <a href="#server-side-upload">Server Side Upload</a>.</p>
 <h1 id='configuration'>Configuration</h1>
 <blockquote>
-<p>Use below code after installation of our library to include autoload file</p>
+<p>Use following code after installation of our library to include autoload file</p>
 </blockquote>
 <pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="nv">$Resizzer_API_PATH</span> <span class="o">=</span> <span class="s1">'Path of ResizerAPI'</span><span class="p">;</span>
@@ -374,13 +374,13 @@ Welcome to the Resizzer API! You can use our API to handle uploading, storing, p
 <p>Make sure to replace <code>Path of ResizerAPI</code> with local path to ResizerAPI library.</p>
 </blockquote>
 
-<p>You can visit our <a href="https://github.com/NewTimeBox/OOS_Engine_KEY_API/">Github library</a>. Install our API from <a href="https://github.com/NewTimeBox/OOS_Engine_KEY_API/archive/master.zip">Github</a> , just click <em>Clone or download</em> button and click <em>Download zip</em>. After extracting zip, copy <em>ResizeAPI</em> folder into your project and use path of this folder to replace <code>Path of ResizeAPI</code>.You can use another way to do this , only purpose is just include autoload.php file in <em>ResizeAPI</em> folder you just downloaded.</p>
+<p>Install our API from <a href="https://github.com/NewTimeBox/OOS_Engine_KEY_API/archive/master.zip">Github</a> , or visit our <a href="https://github.com/NewTimeBox/OOS_Engine_KEY_API/">Github library</a> and just click <em>Clone or download</em> button and click <em>Download zip</em>. After extracting zip, copy <em>ResizeAPI</em> folder into your project and use path of this folder to replace <code>Path of ResizeAPI</code>.You can use another way to do this ,the only purpose is just include autoload.php file in <em>ResizeAPI</em> folder you just downloaded.</p>
 
 <aside class="notice">
 You must replace <code>Path of ResizeAPI</code> with server path of <i>ResizeAPI folder</i> which you just installed.
 </aside>
 <h1 id='authentication'>Authentication</h1>
-<p>Resizzer uses API keys to allow access to our service. You can register a new Resizzer API key at our <a href="http://cloudengine.newtimebox.com">developer portal</a>. Just sign up, in the dashboard click <em>New Project</em> button, then choose best plan that fits you. Then back to dashboard and click <code>More</code> button from project that you want to get API key. Then scroll down and copy <code>SECRET KEY</code>.</p>
+<p>Resizzer uses API keys to allow access to our service. You can register a new Resizzer API key at our <a href="http://cloudengine.newtimebox.com">developer portal</a>. Just sign up, in the dashboard click <em>New Project</em> button, then choose best plan that fits you. Then back to dashboard and click <code>More</code> button from the project that you want to get API key. Then scroll down and copy <code>SECRET KEY</code>.</p>
 
 <p>Use <code>Resizzer::connect</code> function in order to connect with our API it take 4 parameters:<code>$secret_key, $hours, $secure,$params</code>.</p>
 
@@ -420,7 +420,7 @@ You must replace <code>Path of ResizeAPI</code> with server path of <i>ResizeAPI
 <tr>
 <td>secure</td>
 <td>true</td>
-<td>It is recommended to set it true. If it is false, everyone can manipulate your images from URL bar of browser and it can cause increase of Resizzer service costs for you. If <code>secure</code> is true, only your server side codes can manipulate images. If someone tries to manipulate your images from URL bar of browser, they will get <code>connect key is not true</code> response from our servers, so you are safe. To test how our API works you can set it false, so you will be able to manipulate it from URL bar.</td>
+<td>It is recommended to set it true. If it is false, everyone can manipulate your images from URL bar of the browser and it can cause increase of Resizzer service costs for you. If <code>secure</code> is true, only your server side codes can manipulate images. If someone tries to manipulate your images from URL bar of their browsers, they will get <code>connect key is not true</code> response from our servers, so you are safe. To test how our API works you can set it false, so you will be able to manipulate it from URL bar.</td>
 </tr>
 <tr>
 <td>params</td>
@@ -452,7 +452,7 @@ You must replace <code>Your_SECRET_KEY</code> with your Secret API Key.
 
 <p>In <code>Resizzer::connect</code> function you should pass folder&#39;s URL which contains all your images (E.g. <code>http://example.com/images/</code>) with params array which contains index named <code>web_folder_url</code> .</p>
 
-<p>When you pass <code>web_folder_url</code> option, you don&#39;t need to upload your existing images to our service. But when you use our <code>Upload Button</code> (See <a href="#upload-button">Upload Button section</a>), new images that user uploaded will be saved in our server. If you don&#39;t want your images to be stored in our secure servers, you can use your own upload method to upload new images to your own server.</p>
+<p>When you pass <code>web_folder_url</code> option, you don&#39;t need to upload your existing images to our service. However, when you use our <code>Upload Button</code> (See <a href="#upload-button">Upload Button section</a>), new images that user uploaded will be saved in our server. If you don&#39;t want your images to be stored in our secure servers, you can use your own upload method to upload new images to your own server.</p>
 <h1 id='integration'>Integration</h1>
 <p>To use our service with your existing images, you can integrate them or you can use <code>Web Folders</code>  (See <a href="#web-folders">Web Folders</a>).
 <aside class="success">
@@ -465,20 +465,20 @@ To do this, we have 2 option: from <em>UI</em> and from <em>server side code</em
 <p>Login to <a href="http://cloudengine.newtimebox.com/dashboard">Dashboard</a>. If you haven&#39;t already created a new project in dashboard click <em><code>[New Project]</code></em> and then choose the best plan that fits you. Then return back to the dashboard and click <em><code>[More]</code></em> button of project that you want to integrate your images with. Then Scroll down to section which is above of Keys section. You will see <em><code>[Your all images]</code></em> option and <em>Open folder</em> link in front of it. Click it to open the page which is our Cloud Storage console that called OOS(<em>Online Operation System</em>). Then it will automatically open a Virtual folder which contains all your images and is connected to your API KEY. Then choose all your old images, drag and drop them to that virtual folder (in the browser), and you&#39;re done.</p>
 
 <aside class="notice">
-If your images are in your server, download them to your computer. Then open folder you just downloaded which contains all your existing images ( if it is zip, extract it and then open folder to see all images)
+If your images are in your server, download them to your computer. Then open the folder you just downloaded which contains all your existing images ( if it is zip, extract it and then open the folder to see all images)
 </aside>
 <h2 id='integration-with-server-side-code'>Integration with server side code</h2>
-<p>It is pretty easy, you don&#39;t even need to change or save new name for each image. You just need to upload them to our service with the same name and you&#39;re done.</p>
+<p>It is dead easy, you don&#39;t even need to change or save new name for each image. You just need to upload them to our service with the same name and you&#39;re done.</p>
 
 <p>To do this you can create an integration file (e.g. <code>integ.php</code>) in your server, it will run just once and then you can delete it. In that file, select paths and names(filenames) of all your existing images. After that, for each image run upload code. To see how you can upload images with server side code you can select <em><a href="#server-side-upload">Server Side Upload subsection of Upload section</a></em> .</p>
 <h1 id='image-processing'>Image Processing</h1>
-<p>You can manipulate images from URL if you set <code>secure</code> param to false in <code>Resizzer::connect</code> function (see <a href="#authentication">Authentication</a> ). But if you set it to true, you cannot manipulate images from URL. However, our API will encrypt URL of the image with params that you have passed and will generate URL that will manipulate an image.</p>
+<p>You can manipulate images from URL if you set <code>secure</code> param to false in <code>Resizzer::connect</code> function (see <a href="#authentication">Authentication</a> ). However, if you set it to true, you cannot manipulate images from URL. However, our API will encrypt URL of the image with params that you have passed and will generate URL that will manipulate the image.</p>
 <h2 id='manipulation-params'>Manipulation params</h2>
 <p>You can use each function in <code>Resizzer::get_image_url</code> (and similar function that you can see in code section) in php. This function will return URL which will manipulate image according to params that you have passed.This function accepts <code>image_name</code> and <code>manipulation_array or string</code>.
-<code>image_name</code> can be file name from your server or file name from <a href="#upload-response">Upload Response</a>. Also you can pass URL of image which is from other website. Note: URL cannot contain <code>GET</code> params. </p>
+<code>image_name</code> can be file name from your server or file name from <a href="#upload-response">Upload Response</a>. In addition, you can pass URL of the image which is from other website. Note: URL cannot contain <code>GET</code> params. </p>
 
 <blockquote>
-<p>You can use code below to get image URL</p>
+<p>You can use following code to get image URL</p>
 </blockquote>
 <pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="nv">$image_name</span><span class="o">=</span><span class="s2">"cat.jpg"</span><span class="p">;</span>
@@ -499,7 +499,7 @@ If your images are in your server, download them to your computer. Then open fol
 
 </code></pre>
 <blockquote>
-<p>You can also use URL from other website</p>
+<p>You can also use URL from the other website</p>
 </blockquote>
 <pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="nv">$image_name</span><span class="o">=</span><span class="s2">"http://www.tpevent.com/wp-content/uploads/
@@ -604,8 +604,8 @@ If your images are in your server, download them to your computer. Then open fol
 </tr>
 </tbody></table>
 
-<p><code>Resizzer::get_image_url</code>,<code>resizzer_getUrl</code>,<code>get_image_tag</code>,<code>resizzer_image_tag</code> accept same arguments(params).
-There is a 2 way to use this functions: string form, array form. You should insert both of them to <code>Resizzer::get_image_url</code> function.</p>
+<p><code>Resizzer::get_image_url</code>,<code>resizzer_getUrl</code>,<code>get_image_tag</code>,<code>resizzer_image_tag</code> accept the same arguments(params).
+There are two ways to use these functions: string form, array form. You should insert both of them to <code>Resizzer::get_image_url</code> function.</p>
 <pre class="highlight php tab-php"><code>
 <span class="cp">&lt;?php</span>
 <span class="nx">Resizzer</span><span class="o">::</span><span class="na">get_image_url</span><span class="p">(</span><span class="nv">$image_name</span><span class="p">,</span><span class="s1">'w_200,h_200,bri_-25,crop_(12,123,123,132)'</span><span class="p">);</span>
@@ -888,22 +888,22 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 </code></pre>
 <p><img style="display:block;margin:0px auto;text-align:center;" srcset="http://api.newtimebox.com/Resize_engine/w_500,dpr_3/159988fb0bde60750108082802as123138.jpg?&connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577 1x, http://api.newtimebox.com/Resize_engine/w_500,dpr_2/159988fb0bde60750108082802as123138.jpg?&connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577 2x, http://api.newtimebox.com/Resize_engine/w_500,dpr_3/159988fb0bde60750108082802as123138.jpg?&connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577 3x" src=" http://api.newtimebox.com/Resize_engine/w_500,fm_png/159988fb0bde60750108082802as123138.jpg?&connect_key=tmp619ap_k725999b80a7d7abce2c41c884f90b1723859eeab3db5577&secure_token=cbfe9e23c3f36d95578cac42eb2b1db3" ></p>
 <h1 id='upload'>Upload</h1>
-<p>There is a 2 way to upload images to our service: UI and Server side code.</p>
+<p>There are 2 ways to upload images to our service: UI and Server side code.</p>
 <h2 id='upload-button'>Upload Button</h2>
-<p>We are providing <code>Upload Button</code> with rich functionalities which supports drag and drop upload (link, image tag, image from user&#39;s operation system) and multiple file uploading.</p>
+<p>We are providing <code>Upload Button</code> with rich functionalities which support drag and drop upload (link, image tag, image from user&#39;s operation system) and uploading multiple files.</p>
 
 <p>You can create our upload button with php or html.</p>
 
-<p>After you create upload button, you should call <code>get_uploader_scripts</code> javascript function to activate button. After activation, your <code>input</code> will be converted to <code>div</code> which will be actual <code>upload button</code> with all functionality. <code>Upload Button</code> means button that our javascript library created.</p>
+<p>After you create upload button, you should call <code>get_uploader_scripts</code> javascript function to activate the button. After activation, your <code>input</code> will be converted to <code>div</code> which will be actual <code>upload button</code> with all functionalities. <code>Upload Button</code> means the button that our javascript library created.</p>
 
-<p>You can customize <code>Upload Button</code> and <code>Drag Area</code> with attributes of input you just created.
-<code>Drag Area</code> will be appear when user drag some item on the browser.</p>
+<p>You can customize <code>Upload Button</code> and <code>Drag Area</code> with attributes of the input you just created.
+<code>Drag Area</code> will appear when user drags some items on the browser.</p>
 
 <blockquote>
-<p>To create upload button with php you can use below code:</p>
+<p>To create upload button with php you can use following code:</p>
 </blockquote>
 <pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-<span class="c1">//below is an array of attributes for input which will accept files.
+<span class="c1">//below is an array of attributes for the input which will accept files.
 </span><span class="nv">$button_input_attr</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s2">"newtimebox-uploader-id"</span><span class="o">=&gt;</span><span class="s2">"myUploadId"</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nx">Resizzer</span><span class="o">::</span><span class="na">create_upload_button</span><span class="p">(</span><span class="nv">$button_input_attr</span><span class="p">);</span>
 <span class="c1">//after you create button in order to activate it use code below
@@ -911,7 +911,7 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 
 </code></pre>
 <blockquote>
-<p>To create upload button with html you can use below code:</p>
+<p>To create upload button with html you can use following code:</p>
 </blockquote>
 <pre class="highlight php tab-php"><code><span class="c">&lt;!---There should be a container div--&gt;</span>
 <span class="nt">&lt;div&gt;</span>
@@ -932,7 +932,7 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 
 </code></pre>
 <blockquote>
-<p>Each attr has meaning, you can read about each of them</p>
+<p>Each attr has a meaning, you can read about each of them.</p>
 </blockquote>
 
 <p>You can use attributes below to create Upload button with html or php. If you use php, you should pass them as an array. If you use html, you should define them as an html attribute in the input tag.</p>
@@ -949,12 +949,12 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 <tr>
 <td>newtimebox-uploader-id</td>
 <td>unique string for each button</td>
-<td>if you have multiple upload buttons, it will help you and our library identify buttons. For example, <code>newtimebox_OOS_uploader.get_uploaded_file_names(&#39;string that you have passed to newtimebox-uploader-id&#39;);</code>, this function will return current uploaded file names related with id that passes to its paramater.</td>
+<td>if you have multiple upload buttons, it will help you and our library identify buttons. For example, <code>newtimebox_OOS_uploader.get_uploaded_file_names(&#39;string that you have passed to newtimebox-uploader-id&#39;);</code>, this function will return current uploaded file names related with the id that passes to its paramater.</td>
 </tr>
 <tr>
 <td>multiple</td>
 <td>true or false</td>
-<td>if it is true, upload button can accept more than one file at the same time, if it is false, upload button only can accept one file at the same time.</td>
+<td>if it is true, upload button can accept more than one file at the same time, if it is false, upload button can only accept one file at the same time.</td>
 </tr>
 <tr>
 <td>image-uploader-count-limit</td>
@@ -995,7 +995,7 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 <h3 id='usage-of-upload-button'>Usage of Upload Button</h3>
 <p>We have created a javascript library for you which was automatically loaded when you call <code>Resizzer::get_uploader_scripts();</code> function. You can use <code>newtimebox_OOS_uploader</code> class to control <code>Upload Button</code> behaviors and requests that it sent.</p>
 
-<p>When user choose images or drag and drop them to <code>Upload Button</code>, user&#39;s browser will send those images to our secure servers. Then our servers will return response which contains file_name , mime_type, file_src and other useful information for you. You can check all response indexes in <a href="#upload-response">Upload Response</a> section.</p>
+<p>When user chooses images or drag and drop them to <code>Upload Button</code>, user&#39;s browser will send those images to our servers. Then our servers will return response which contains file_name , mime_type, file_src and other useful information for you. You can check all response indexes in <a href="#upload-response">Upload Response</a> section.</p>
 
 <blockquote>
 <p>To manipulate new uploaded image URL you can use this code:</p>
@@ -1012,9 +1012,9 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 </code></pre>
 <p><b>How to get and manipulate new Uploaded Image Url</b></p>
 
-<p><code>newtimebox_OOS_uploader.set_response_url_params</code></span> will set manipulation params for <code>file_src</code> which will come with response and will represent URL for uploaded image .(<a href="#" onclick="$('[custom_id=ReponseParams]').fadeToggle(200);return false;" >click to learn more</a>)</p>
+<p><code>newtimebox_OOS_uploader.set_response_url_params</code></span> will set manipulation params for <code>file_src</code> which will come with response and will represent URL for the uploaded image .(<a href="#" onclick="$('[custom_id=ReponseParams]').fadeToggle(200);return false;" >click to learn more</a>)</p>
 
-<p><span custom_id="ReponseParams" style="display:none" >When users upload image, you probably want to show preview of it to them. When user uploads image, our servers will save it and return response. This response will contain <code>file_src</code> index which represents URL of new uploaded image, so you can put this src to some image tag to show the user new uploaded image preview. But probably you will want it with specified manipulation params. E.g. <code>width,height,crop,fit,blur and other effects</code>. But if you have set <code>secure</code> param (argument) to true in <code>Resizzer::connect</code> function (see <a href="#authentication">Authentication</a> ) you cannot manipulate it after the user uploaded it. To manipulate image URL that user has uploaded recently, you should define manipulation params beforehand, so our servers will manipulate the image and then it will return image with response. To do this you can use <code>newtimebox_OOS_uploader.set_response_url_params</code> function and can pass manipulation params as a javascript object.</span></p>
+<p><span custom_id="ReponseParams" style="display:none" >When users upload an image, you probably want to show the preview of it to them. When user uploads the image, our servers will save it and return response. This response will contain <code>file_src</code> index which represents URL of the new uploaded image, so you can put this src to some image tags to show the user the new uploaded image preview. However, you will probably want it with specified manipulation params. E.g. <code>width,height,crop,fit,blur and other effects</code>. But if you have set <code>secure</code> param (argument) to true in <code>Resizzer::connect</code> function (see <a href="#authentication">Authentication</a> ) you cannot manipulate it after the user uploaded it. To manipulate the image URL that user has uploaded recently, you should define manipulation params beforehand, so our servers will manipulate the image and then it will return the image with response. To do this you can use <code>newtimebox_OOS_uploader.set_response_url_params</code> function and can pass manipulation params as a javascript object.</span></p>
 <h3 id='how-to-control-upload-process'>How to control upload process</h3>
 <p>We are providing callback for each step in uploading process so you will be able to customize all processes easily.</p>
 
@@ -1022,20 +1022,20 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 
 <p>Meaning of params that will be used in chart:</p>
 
-<p><code>element</code> is container of upload button  (in html code it is div that contains <code>Upload Button</code>)</p>
+<p><code>element</code> is the container of upload button  (in html code it is div that contains <code>Upload Button</code>)</p>
 
-<p><code>upload_count</code> - how many images user have chosen</p>
+<p><code>upload_count</code> - how many images the user has chosen</p>
 
 <p><code>index</code> - index of new  chosen image (for example, index of second uploaded image will be 2)</p>
 
-<p><code>percentComplete</code> - how much percent of process finished for uploading an image</p>
+<p><code>percentComplete</code> - what percentage of process finished for uploading an image</p>
 
 <p><code>event</code> - come from xhr.upload.addEventListener(&quot;progress&quot;,function(<code>event</code>)). (If you will not use it or you didn&#39;t know what it is, you can ignore this part).</p>
 
-<p><code>data</code> - is response data from server, you can see it in <a href="#upload-response">Upload Response section</a></p>
+<p><code>data</code> - is response data from our server, you can see it in <a href="#upload-response">Upload Response section</a></p>
 
 <blockquote>
-<p>Code Below is default behavior code to control uploading and also you can customize it:</p>
+<p>Following code is default behavior code to control uploading and you can also customize it:</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code>
 <span class="c1">//will be called after user selects image that he or she wants to upload</span>
@@ -1051,14 +1051,14 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 <span class="c1">//your custom codes</span>
 <span class="p">});</span>
 
-<span class="c1">//will be called each time upload progress finished </span>
+<span class="c1">//will be called each time upload progress is finished </span>
 <span class="c1">//so you can show how many percent of image uploaded</span>
 <span class="nx">newtimebox_OOS_uploader</span><span class="p">.</span><span class="nx">when_upload_progress</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="nx">percentComplete</span><span class="p">,</span><span class="nx">element</span><span class="p">,</span><span class="nx">index</span><span class="p">){</span>
     <span class="nx">when_upload_progress_deault</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="nx">percentComplete</span><span class="p">,</span><span class="nx">element</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
 <span class="c1">//your custom codes</span>
 <span class="p">});</span>
 
-<span class="c1">//will fire after upload finished  successfully when code is 200</span>
+<span class="c1">//will fire after upload is finished  successfully when code is 200</span>
 <span class="nx">newtimebox_OOS_uploader</span><span class="p">.</span><span class="nx">when_upload_finish</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="nx">element</span><span class="p">,</span><span class="nx">index</span><span class="p">){</span>
     <span class="c1">//you need to check if data contains error index or not</span>
     <span class="k">try</span><span class="p">{</span>
@@ -1072,7 +1072,7 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 <span class="p">});</span>
 
 
-<span class="c1">//will fire when upload failed</span>
+<span class="c1">//will fire when upload is failed</span>
 <span class="nx">newtimebox_OOS_uploader</span><span class="p">.</span><span class="nx">when_upload_fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span><span class="nx">index</span><span class="p">){</span>
     <span class="c1">//when upload response code is not 200</span>
 <span class="nx">when_upload_fail_default</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
@@ -1092,22 +1092,22 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 <tr>
 <td>when_select</td>
 <td>element ,upload_count</td>
-<td>This will be called when user select or drag and drop images.</td>
+<td>This will be called when user selects or drag and drops images.</td>
 </tr>
 <tr>
 <td>when_upload_begin</td>
 <td>element, index , upload_count</td>
-<td>it will be called for each image that begins to be uploaded</td>
+<td>it will be called for each image that begins to be uploaded.</td>
 </tr>
 <tr>
 <td>when_upload_progress</td>
 <td>event, percentComplete, element, index</td>
-<td>it will be called for each image in each process complete</td>
+<td>it will be called for each image in each process completed.</td>
 </tr>
 <tr>
 <td>when_upload_finish</td>
 <td>data,element,index</td>
-<td>it will be called when uploading process was finished</td>
+<td>it will be called when uploading process is finished</td>
 </tr>
 <tr>
 <td>when_upload_fail</td>
@@ -1121,11 +1121,11 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 </tr>
 </tbody></table>
 
-<p>If you want to customize uploading process but also want to use default behaviours, you can use <code>when_select_default</code>,<code>when_upload_begin_default</code>,
+<p>If you want to customize uploading process, but also want to use default behaviours, you can use <code>when_select_default</code>,<code>when_upload_begin_default</code>,
 <code>when_upload_progress_deault</code>,<code>when_upload_finish_default</code>,<code>when_upload_fail_default</code>.</p>
 <h2 id='server-side-upload'>Server Side Upload</h2>
 <blockquote>
-<p>To upload image use this code:</p>
+<p>To upload an image use this code:</p>
 </blockquote>
 <pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
@@ -1142,7 +1142,7 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 <span class="c1">//response is json
 </span>    <span class="k">if</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'error'</span><span class="p">]</span><span class="o">!=</span><span class="kc">false</span><span class="p">){</span>
     <span class="c1">//upload was successful
-</span>    <span class="c1">//you can save image name , to get image name use below code
+</span>    <span class="c1">//you can save image name , to get the image name use the following code
 </span>    <span class="nv">$new_image_name</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'file_name'</span><span class="p">];</span>
     <span class="p">}</span><span class="k">else</span><span class="p">{</span>
       <span class="c1">//upload was failed
@@ -1158,8 +1158,8 @@ lets use dpr <span class="nt">&lt;br/&gt;</span>
 <span class="p">}</span>
 
 </code></pre>
-<p>You can use Upload function from our API library. E.g. you can set server side upload script in the file which accept uploaded images from your users in your server.
-It take 2 params: <code>String file</code>, <code>array params</code></p>
+<p>You can use Upload function from our API library. E.g. you can set server side upload script in the file which accepts uploaded images from your users in your server.
+It takes 2 params: <code>String file</code>, <code>array params</code></p>
 
 <table><thead>
 <tr>
@@ -1176,16 +1176,16 @@ It take 2 params: <code>String file</code>, <code>array params</code></p>
 <tr>
 <td>params</td>
 <td>array()</td>
-<td>you can pass image name with array params.<code>array(&#39;filename&#39;=&gt;&#39;image_name&#39;)</code></td>
+<td>you can pass the image name with array params.<code>array(&#39;filename&#39;=&gt;&#39;image_name&#39;)</code></td>
 </tr>
 </tbody></table>
 
 <p>You can use this code to upload images from your users and also integrate your existing images with our service.</p>
 
-<p>If response equals to <code>false</code>, it means upload process failed, otherwise upload process was successful.You learn more information in <a href="#upload-response">Upload Response section</a>.</p>
+<p>If response equals to <code>false</code>, it means upload process is failed, otherwise upload process was successful.You learn more information in <a href="#upload-response">Upload Response section</a>.</p>
 <h2 id='upload-response'>Upload Response</h2><h3 id='success-response'>Success Response</h3>
 <blockquote>
-<p>If upload was successfull it will return a multidimensional array form of below json response.</p>
+<p>If upload was successfull it will return a multidimensional array form of following json response.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
@@ -1215,7 +1215,7 @@ It take 2 params: <code>String file</code>, <code>array params</code></p>
 <tr>
 <td>file_name</td>
 <td>string</td>
-<td>filename will be automatically generated. If you use server side upload and provide filename as a parameter, it will upload file with the same name and it will return it back. If filename is not unique, our service will add version to end of filename. E.g. <code>Yourfilename.jpg(1)</code></td>
+<td>filename will be automatically generated. If you use server side upload and provide filename as a parameter, it will upload file with the same name and it will return it back. If filename is not unique, our service will add version to the end of the filename. E.g. <code>Yourfilename.jpg(1)</code></td>
 </tr>
 <tr>
 <td>size</td>
@@ -1235,12 +1235,12 @@ It take 2 params: <code>String file</code>, <code>array params</code></p>
 <tr>
 <td>image_dimensions</td>
 <td>array</td>
-<td>array will contain 2 params:<code>height</code> and <code>width</code> of image.</td>
+<td>array will contain 2 params:<code>height</code> and <code>width</code> of the image.</td>
 </tr>
 <tr>
 <td>file_src</td>
 <td>string</td>
-<td>you can use this in html image tag as src attribute. If you are using our <a href="#upload-button">UI Upload Button</a> (with Javascript), you need to know that <code>set_response_url_params</code> function will affect this response index, so it will return manipulated form of image that you required in that function.</td>
+<td>you can use this in html image tag as src attribute. If you are using our <a href="#upload-button">UI Upload Button</a> (with Javascript), you need to know that <code>set_response_url_params</code> function will affect this response index, so it will return manipulated form of the image that you required in that function.</td>
 </tr>
 </tbody></table>
 <h3 id='error-response'>Error Response</h3><pre class="highlight json tab-json"><code><span class="w">
@@ -1267,7 +1267,7 @@ It take 2 params: <code>String file</code>, <code>array params</code></p>
 <tr>
 <td>error_code</td>
 <td>int</td>
-<td>You can see meaning of errors in <a href="#error-codes">Error codes</a> .</td>
+<td>You can see the meaning of errors in <a href="#error-codes">Error codes</a> .</td>
 </tr>
 <tr>
 <td>error_mes</td>
@@ -1284,7 +1284,7 @@ It take 2 params: <code>String file</code>, <code>array params</code></p>
 </thead><tbody>
 <tr>
 <td>1</td>
-<td>User used <code>drag and drop</code> method to upload image and dropped text which is not link.</td>
+<td>User used <code>drag and drop</code> method to upload an image and dropped the text which is not a link.</td>
 </tr>
 <tr>
 <td>2</td>
